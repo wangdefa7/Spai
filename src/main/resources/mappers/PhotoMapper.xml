@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mappers.PhotoMapper">
+  <insert id="insert" parameterType="com.domain.Photo">
+    insert into photo (PhotoId, PhotoName, UserID, 
+      PhotoPath,LocationID,Photocontent)
+    values (#{photoid,jdbcType=INTEGER}, #{photoname,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
+      #{photopath,jdbcType=VARCHAR},#{locationid},#{photocontent})
+  </insert>
+  <select id="listPhotoByid" parameterType="int" resultType="com.domain.Photo">
+  select photoPath from photo where locationid =#{id};
+  </select>
+  <select id="listAll" resultType="com.domain.Photo">
+  select * from photo
+  </select>
+</mapper>

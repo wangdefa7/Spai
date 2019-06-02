@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<link rel="stylesheet" th:href="@{/libs/css/bootstrap.css}">
+<link rel="stylesheet" th:href="@{/libs/css/bootstrap.min.css}">
+<script type="text/javascript" th:src="@{/libs/js/bootstrap.min.js}"></script>
+<title>随手拍首页</title>
+</head>
+<body>
+	<div class="container" id="box">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h1 style="text-align: center">
+				随手拍管理系统
+			</h1> 
+			<div style="background: #0000">
+			<a type="button" class="btn btn-info " th:href=" @{/index}">首页</a>
+			<a type="button" class="btn btn-info " th:href=" @{/user/list}">用户</a>
+			<a type="button" class="btn btn-info " th:href=" @{/photo/}">照片</a>
+			<a type="button" class="btn btn-info " th:href=" @{/location/list}">位置</a>
+			<a type="button" class="btn btn-info " th:href=" @{/incident/}">事件处理</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							编号
+						</th>
+						<th>
+							路径
+						</th>
+						<th>
+							内容
+						</th>
+						<th>
+							名字
+						</th>
+						<th>
+							用户id
+						</th>
+						<th>
+							位置id
+						</th>
+						<th>
+							照片
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="l:${photos}">
+						<td th:text="${l.photoid}">
+						</td>
+						<td id="name" th:text="${l.photoname}">
+						</td>
+						<td th:text="${l.photocontent}">
+						</td>
+						<td th:text="${l.photopath}">
+						</td>
+						<td th:text="${l.userid}">
+						</td>
+						<td th:text="${l.locationid}">
+						</td>
+						<td >
+						<img id="photo" th:src="${l.photoname}"  style="width: 100px;height: 100px">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+function open(){
+	var name=$("photo").value;
+	alert(url)
+	var url="http://39.96.23.140:8000/"+name;
+	$("photo").src=url;
+	alert(url)
+}
+/* setTimeout("open()","2000");  */
+
+</script>
+</html>

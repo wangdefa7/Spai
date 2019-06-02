@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<link rel="stylesheet" th:href="@{/libs/css/bootstrap.css}">
+<link rel="stylesheet" th:href="@{/libs/css/bootstrap.min.css}">
+<script type="text/javascript" th:src="@{/libs/js/bootstrap.min.js}"></script>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>随手拍</title>
+</head>
+<body>
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h1 style="text-align: center">
+				随手拍管理系统
+			</h1> 
+			<div style="background: #0000">
+			<a type="button" class="btn btn-info " th:href=" @{/index}">首页</a>
+			<a type="button" class="btn btn-info " th:href=" @{/user/list}">用户</a>
+			<a type="button" class="btn btn-info " th:href=" @{/location/list}">位置</a>
+			<a type="button" class="btn btn-info " th:href=" @{/incident/}">事件处理</a>
+			</div>
+		</div>
+	</div>
+</div>
+<h1>操作失败</h1>
+</body>
+</html>

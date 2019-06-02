@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mappers.LocationMapper">
+  <resultMap id="BaseResultMap" type="com.domain.Location">
+    <result column="LocationId" jdbcType="INTEGER" property="locationid" />
+    <result column="LocationName" jdbcType="VARCHAR" property="locationname" />
+    <result column="LocationX" jdbcType="VARCHAR" property="locationx" />
+    <result column="Longitude" jdbcType="DOUBLE" property="longitude" />
+    <result column="Latitude" jdbcType="DOUBLE" property="latitude" />
+    <result column="Country" jdbcType="VARCHAR" property="country" />
+    <result column="Address" jdbcType="VARCHAR" property="address" />
+    <result column="userId" jdbcType="VARCHAR" property="userId" />
+    <result column="LocationDescribe" jdbcType="VARCHAR" property="locationdescribe" />
+  </resultMap>
+  <insert id="insert" parameterType="com.domain.Location" useGeneratedKeys="true" keyProperty="LocationId">
+    insert into location 
+    (LocationId, LocationName, LocationX, Longitude, Latitude, Country, 
+      Address, LocationDescribe,UserID)
+      values 
+      (#{locationid}, #{locationname,jdbcType=VARCHAR}, #{locationx,jdbcType=VARCHAR}, 
+      #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, #{country,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{locationdescribe,jdbcType=VARCHAR},#{userId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.domain.Location" keyProperty="LocationId">
+    insert into location
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="locationid != null">
+        LocationId,
+      </if>
+      <if test="locationname != null">
+        LocationName,
+      </if>
+      <if test="locationx != null">
+        LocationX,
+      </if>
+      <if test="longitude != null">
+        Longitude,
+      </if>
+      <if test="latitude != null">
+        Latitude,
+      </if>
+      <if test="country != null">
+        Country,
+      </if>
+      <if test="address != null">
+        Address,
+      </if>
+      <if test="locationdescribe != null">
+        LocationDescribe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="locationid != null">
+        #{locationid,jdbcType=INTEGER},
+      </if>
+      <if test="locationname != null">
+        #{locationname,jdbcType=VARCHAR},
+      </if>
+      <if test="locationx != null">
+        #{locationx,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="locationdescribe != null">
+        #{locationdescribe,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="listAll"  resultType="com.domain.Location">
+  	select * from location
+  </select>
+</mapper>

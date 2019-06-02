@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mappers.IncidentMapper">
+  <insert id="insert" parameterType="com.domain.Incident">
+    insert into incident (incidentId, incidentTitle, incidentName, 
+      incidentContent, incidentFlag, LocationId, 
+      Userid, createById, createdata
+      )
+    values (#{incidentid,jdbcType=INTEGER}, #{incidenttitle,jdbcType=VARCHAR}, #{incidentname,jdbcType=VARCHAR}, 
+      #{incidentcontent,jdbcType=VARCHAR}, #{incidentflag,jdbcType=VARCHAR}, #{locationid,jdbcType=INTEGER}, 
+      #{userid,jdbcType=INTEGER}, #{createbyId,jdbcType=INTEGER}, #{createdata,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <select id="listIncident" parameterType="int" resultType="com.domain.Incident">
+  select * from incident where incidentId = #{incidentid}
+  </select>
+  <select id="listAll" resultType="com.domain.Incident">
+  select * from incident
+  </select>
+  <update id="update" parameterType="com.domain.Incident">
+  update incident set 
+  incidentTitle = #{incidenttitle,jdbcType=VARCHAR}, 
+  incidentName = #{incidentname,jdbcType=VARCHAR},
+  incidentContent = #{incidentcontent,jdbcType=VARCHAR}, 
+  incidentFlag = #{incidentflag,jdbcType=VARCHAR},
+  createById = #{createbyId,jdbcType=INTEGER}
+  where incidentId=#{incidentid,jdbcType=INTEGER}
+     
+  </update>
+</mapper>

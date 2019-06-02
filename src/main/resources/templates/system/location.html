@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<link rel="stylesheet" th:href="@{/libs/css/bootstrap.css}">
+<link rel="stylesheet" th:href="@{/libs/css/bootstrap.min.css}">
+<script type="text/javascript" th:src="@{/libs/js/bootstrap.min.js}"></script>
+<title>随手拍首页</title>
+</head>
+<body>
+	<div class="container" id="box">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h1 style="text-align: center">
+				随手拍管理系统
+			</h1> 
+			<div style="background: #0000">
+			<a type="button" class="btn btn-info " th:href=" @{/index}">首页</a>
+			<a type="button" class="btn btn-info " th:href=" @{/user/list}">用户</a>
+			<a type="button" class="btn btn-info " th:href=" @{/photo/}">照片</a>
+			<a type="button" class="btn btn-info " th:href=" @{/location/list}">位置</a>
+			<a type="button" class="btn btn-info " th:href=" @{/incident/}">事件处理</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							编号
+						</th>
+						<th>
+							位置名称
+						</th>
+						<th>
+							经度
+						</th>
+						<th>
+							纬度
+						</th>
+						<!-- <th>
+							精确指数
+						</th> -->
+						<th>
+							位置
+						</th>
+						<th>
+							位置描述
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="l:${locations}">
+						<td th:text="${l.locationid}">
+						</td>
+						<td th:text="${l.locationname}">
+						</td>
+						<td th:text="${l.longitude}">
+						</td>
+						<td th:text="${l.latitude}">
+						</td>
+						<td th:text="${l.country}">
+						</td>
+						<td th:text="${l.locationdescribe}">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+</html>

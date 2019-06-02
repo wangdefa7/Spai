@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<link rel="stylesheet" th:href="@{/libs/css/bootstrap.css}">
+<link rel="stylesheet" th:href="@{/libs/css/bootstrap.min.css}">
+<script type="text/javascript" th:src="@{/libs/js/bootstrap.min.js}"></script>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>随手拍事件编辑</title>
+</head>
+<body>
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h1 style="text-align: center">
+				随手拍管理系统
+			</h1> 
+			<div style="background: #0000; text-align: left" >
+			<a type="button" class="btn btn-info " th:href=" @{/index}">首页</a>
+			<a type="button" class="btn btn-info " th:href=" @{/user/list}">用户</a>
+			<a type="button" class="btn btn-info " th:href=" @{/photo/}">照片</a>
+			<a type="button" class="btn btn-info " th:href=" @{/location/list}">位置</a>
+			<a type="button" class="btn btn-info " th:href=" @{/incident/}">事件处理</a>
+			</div>
+		</div>
+	</div>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<form role="form" action="#" th:action="@{/incident/insert}" th:object="${incident}" method="post">
+			    <div class="form-group">
+					 <label >位置id</label>
+					 <input type="text" class="form-control" th:field="*{locationid}"/>
+				</div>
+				<div class="form-group">
+					 <label >用户id</label>
+					 <input type="text" class="form-control" th:field="*{userid}"/>
+				</div>
+				<div class="form-group">
+					 <label >事件标题</label>
+					 <input type="text" class="form-control" th:field="*{incidenttitle}" />
+				</div>
+				<div class="form-group">
+					 <label >事件名字</label>
+					 <input type="text" class="form-control" th:field="*{incidentname}"/>
+				</div>
+				<div class="form-group">
+					 <label >事件内容</label>
+					 <input type="text" class="form-control" th:field="*{incidentcontent}"/>
+				</div>
+				<div class="form-group">
+					 <label >事件状态</label>
+					 <input type="text" class="form-control" th:field="*{incidentflag}"/>
+				</div>
+				<div class="form-group">
+					 <label >你的警号</label>
+					 <input type="text" class="form-control" th:field="*{createbyId}"/>
+				</div>
+				<button type="submit" class="btn btn-default">提交</button>
+				</div>
+			</form> 
+		</div>
+	</div>
+</body>
+</html>

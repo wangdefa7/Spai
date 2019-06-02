@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<link rel="stylesheet" th:href="@{/libs/css/bootstrap.css}">
+<link rel="stylesheet" th:href="@{/libs/css/bootstrap.min.css}">
+<script type="text/javascript" th:src="@{/libs/js/bootstrap.min.js}"></script>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>用户列表</title>
+</head>
+<body>
+<div class="container" id="box">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h1 style="text-align: center">
+				随手拍管理系统
+			</h1> 
+			<div style="background: #0000">
+			<a type="button" class="btn btn-info " th:href=" @{/index}">首页</a>
+			<a type="button" class="btn btn-info " th:href=" @{/user/list}">用户</a>
+			<a type="button" class="btn btn-info " th:href=" @{/photo/}">照片</a>
+			<a type="button" class="btn btn-info " th:href=" @{/location/list}">位置</a>
+			<a type="button" class="btn btn-info " th:href=" @{/incident/}">事件处理</a>
+			</div>
+		</div>
+	</div>
+</div>
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<table class="table">
+					<tr>
+						<td>用户ID</td>
+						<td>用户名</td>
+						<td>密码</td>
+						<td>身份证</td>
+						<td>头像</td>
+						<td>手机号</td>
+						<td>创建时间</td>
+						<td>用户身份</td>
+
+					</tr>
+					<tr th:each="user:${users}">
+						<td th:text="${user.id}"></td>
+						<td th:text="${user.name}"></td>
+						<td th:text="${user.password}"></td>
+						<td th:text="${user.IDcard}"></td>
+						<td th:text="${user.hphoto}"></td>
+						<td th:text="${user.phone}"></td>
+						<td th:text="${user.createdate}"></td>
+						<td th:text="${user.identity}"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+<script th:inline="javascript">
+var ctx=[[@{/}]];
+var grid = null;
+/* window.onload=function(){
+ 	$.post(ctx+'user/list',function(data){
+			alert("JQUERY:  "+data)
+		},"text"
+	); 
+	
+    $.ajax({
+            type: 'post',
+            dataType: 'text',
+            url: ctx+'user/list',
+            data: {},
+            cache: false,
+            async: true,
+            success: function (data) {
+            	alert("ajax:  "+data)
+      
+            }
+        });
+
+});  */
+
+</script>
+</html>

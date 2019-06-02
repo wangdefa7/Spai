@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<link rel="stylesheet" th:href="@{/libs/css/bootstrap.css}">
+<link rel="stylesheet" th:href="@{/libs/css/bootstrap.min.css}">
+<script type="text/javascript" th:src="@{/libs/js/bootstrap.min.js}"></script>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>随手拍事件</title>
+</head>
+<body>
+<div class="container" id="box">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h1 style="text-align: center">
+				随手拍管理系统
+			</h1> 
+			<div style="background: #0000">
+			<a type="button" class="btn btn-info " th:href=" @{/index}">首页</a>
+			<a type="button" class="btn btn-info " th:href=" @{/user/list}">用户</a>
+			<a type="button" class="btn btn-info " th:href=" @{/photo/}">照片</a>
+			<a type="button" class="btn btn-info " th:href=" @{/location/list}">位置</a>
+			<a type="button" class="btn btn-info " th:href=" @{/incident/}">事件处理</a>
+			</div>
+			<a type="button" class="btn btn-default btn-sm " th:href=" @{/incident/page}">增加事件</a>
+			<a type="button" class="btn btn-default btn-sm " th:href=" @{/incident/pagupdate}">修改事件</a>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							编号
+						</th>
+						<th>
+							事件标题
+						</th>
+						<th>
+							事件名字
+						</th>
+						<th>
+							事件内容
+						</th>
+						<th>
+							事件状态
+						</th>
+						<th>
+							负责人的警号
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="i:${incidents}" class="info">
+						<td  th:text="${i.incidentid}">
+						</td>
+						<td th:text="${i.incidenttitle}">
+						</td>
+						<td th:text="${i.incidentname}">
+						</td>
+						<td th:text="${i.incidentcontent}">
+						</td>
+						<td th:text="${i.incidentflag}">
+						</td>
+						<td th:text="${i.createbyId}">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+</html>
